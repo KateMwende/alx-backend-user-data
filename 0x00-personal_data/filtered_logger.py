@@ -3,6 +3,7 @@
 Returns the log message obfuscated
 """
 import re
+from typing import List
 
 
 def filter_datum(fields: list[str], redaction: str,
