@@ -70,11 +70,13 @@ class BasicAuth(Auth):
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
-        Retrieve the current user based on the provided request's authorization header.
+        Retrieve the current user based on the
+        provided request's authorization header.
         Args:
             request (Request): The Flask request object. Default is None.
         Returns:
-            User or None: The User instance if authenticated, or None if not authenticated
+            User or None: The User instance if authenticated,
+            or None if not authenticated
         """
         if request is None:
             return None
