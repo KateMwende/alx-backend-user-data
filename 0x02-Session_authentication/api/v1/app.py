@@ -30,6 +30,9 @@ def before_request():
     """filtering of each request"""
     if auth is None:
         pass
+    else:
+        request.current_user = auth.current_user(request)
+
     excluded_list = ['/api/v1/status/', '/api/v1/unauthorized/',
                      '/api/v1/forbidden/']
 
