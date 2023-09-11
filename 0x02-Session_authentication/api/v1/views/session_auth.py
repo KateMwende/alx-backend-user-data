@@ -10,7 +10,7 @@ from typing import Tuple
 
 
 @app_views.route('/auth_session/login',
-                 methods="POST", strict_slashes=False)
+                 methods=["POST"], strict_slashes=False)
 def login() -> Tuple[str, int]:
     """
     Handle user authentication.
