@@ -12,7 +12,14 @@ from typing import Tuple
 @app_views.route('/auth_session/login',
                  methods="POST", strict_slashes=False)
 def login() -> Tuple[str, int]:
-    """retrieve email and password parameters"""
+    """
+    Handle user authentication.
+    Retrieves email and password parameters from the request's form data.
+    Verifies the provided email and password, and creates a session if valid.
+
+    Returns:
+        A tuple containing a JSON response and an HTTP status code.
+    """
     email = request.form.get('email')
     if email is None or len(email.strip()) == 0:
         return jsonify({"error": "email missing"}), 400
