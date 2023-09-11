@@ -3,7 +3,7 @@
 Session authentication
 """
 import os
-from flask import request, jsonify
+from flask import request, jsonify, abort
 from api.v1.views import app_views
 from models.user import User
 from typing import Tuple
@@ -40,3 +40,13 @@ def login() -> Tuple[str, int]:
         res.set_cookie(os.getenv('SESSION_NAME'), session_id)
         return res
     return jsonify({"error": "wrong password"}), 401
+
+
+@app_views.route('/auth_session/logout', methods=['DELETE'],
+                 strict_slashes=False)
+def logout():
+    """logout of a session using session id"""
+    from api.v1.app import auth
+    if auth.destroy_session(request):
+        return jsonify({}), 200
+    abort(404)
