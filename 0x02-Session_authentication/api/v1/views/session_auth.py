@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Flask view that handles all routes for the
-Session authentication"""
+"""
+Flask view that handles all routes for the
+Session authentication
+"""
 import os
 from api.v1.views import app_views
 from flask import request, jsonify
