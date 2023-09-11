@@ -3,8 +3,8 @@
 Session authentication
 """
 import os
-from api.v1.views import app_views
 from flask import request, jsonify
+from api.v1.views import app_views
 from models.user import User
 from typing import Tuple
 
