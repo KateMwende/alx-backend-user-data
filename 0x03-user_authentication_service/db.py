@@ -3,6 +3,8 @@
 """
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
@@ -35,4 +37,14 @@ class DB:
         user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
         self._session.commit()
+        return user
+
+    def find_user_by(self, **kwargs) -> User:
+        """returns the first row found in the users
+        table as filtered by the method input arguments"""
+        user = self._session.query(User).filter_by(**kwargs).first()
+        if not kwargs:
+            raise InvalidRequestError
+        if user is None:
+            raise NoResultFound
         return user
