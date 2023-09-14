@@ -27,7 +27,7 @@ def users() -> str:
 
 
 @app.route('/sessions', methods=["GET"], stict_slashes=False)
-def login():
+def login() -> str:
     """implement a login function"""
     email = request.form.get("email")
     password = request.form.get("password")
