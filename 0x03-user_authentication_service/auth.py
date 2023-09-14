@@ -43,7 +43,7 @@ class Auth:
             return False
         return bcrypt.checkpw(password.encode('utf-8'), user.hashed_password)
 
-    def get_user_from_session_id(self, session_id: str):
+    def get_user_from_session_id(self, session_id: str) -> User or None:
         """find user with session id"""
         if session_id is None:
             return None
